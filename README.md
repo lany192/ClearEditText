@@ -15,3 +15,10 @@ Add it in your root build.gradle at the end of repositories:
     dependencies {
         compile 'com.github.lany192:ClearEditText:1.0.0'
     }
+
+## Step 3. Use in layout
+
+    <com.github.lany192.edittext.ClearEditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
