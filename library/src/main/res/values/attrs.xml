@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ClearEditText">
-        <attr name="clearDrawable" format="reference" />
+        <attr name="clear_drawable" format="reference" />
+        <attr name="clear_size" format="dimension|integer" />
+        <attr name="left_drawable" format="reference" />
+        <attr name="left_size" format="dimension|integer" />
     </declare-styleable>
 </resources>

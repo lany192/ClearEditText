@@ -1,7 +1,6 @@
 package com.github.lany192.edittext;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
@@ -10,7 +9,6 @@ import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -26,6 +24,9 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     private boolean mClearEnable = false;
     @DrawableRes
     private int mClearDrawableResId = R.drawable.vector_delete_black;
+
+    private float mClearDrawableSize = 20;
+    private float mLeftDrawableSize = 20;
 
     public ClearEditText(Context context) {
         super(context);
@@ -45,7 +46,10 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     private void init(AttributeSet attrs) {
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ClearEditText);
-            mClearDrawableResId = a.getResourceId(R.styleable.ClearEditText_clearDrawable, mClearDrawableResId);
+            mClearDrawableResId = a.getResourceId(R.styleable.ClearEditText_clear_drawable, mClearDrawableResId);
+            mClearDrawableSize = a.getDimension(R.styleable.ClearEditText_clear_size, 20);
+            mLeftDrawableResId = a.getResourceId(R.styleable.ClearEditText_left_drawable, -1);
+            mLeftDrawableSize = a.getDimension(R.styleable.ClearEditText_left_size, 20);
             a.recycle();
         }
         initClearIcon();
@@ -65,13 +69,9 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         if (clearDrawable == null) {
             clearDrawable = ContextCompat.getDrawable(getContext(), mClearDrawableResId);
         }
-        clearDrawable.setBounds(0, 0, dp2px(20), dp2px(20));
+        clearDrawable.setBounds(0, 0, (int) mClearDrawableSize, (int) mClearDrawableSize);
         Drawable right = mClearEnable ? clearDrawable : null;
         setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
-    }
-
-    private int dp2px(float dpValue) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, Resources.getSystem().getDisplayMetrics());
     }
 
     private void initLeftIcon() {
@@ -80,7 +80,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
             if (mLeftDrawable == null) {
                 mLeftDrawable = ContextCompat.getDrawable(getContext(), mLeftDrawableResId);
             }
-            mLeftDrawable.setBounds(0, 0, mLeftDrawable.getIntrinsicWidth(), mLeftDrawable.getIntrinsicHeight());
+            mLeftDrawable.setBounds(0, 0, (int) mLeftDrawableSize, (int) mLeftDrawableSize);
         }
         Drawable left = mLeftDrawable != null ? mLeftDrawable : null;
         setCompoundDrawables(left, getCompoundDrawables()[1], getCompoundDrawables()[2], getCompoundDrawables()[3]);

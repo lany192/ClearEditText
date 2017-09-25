@@ -11,6 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:clearDrawable="@drawable/delete_red" />
+        app:clear_drawable="@drawable/delete_red"
+        app:clear_size="20dp"
+        app:left_drawable="@mipmap/ic_launcher"
+        app:left_size="20dp" />
 
 </LinearLayout>
