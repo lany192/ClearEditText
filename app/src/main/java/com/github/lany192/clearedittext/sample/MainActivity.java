@@ -13,5 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mClearEditText = (ClearEditText) findViewById(R.id.edittext);
+        // mClearEditText.setClearDrawable(R.drawable.delete_gray);
+
+        mClearEditText.setText("hello");
     }
 }

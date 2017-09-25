@@ -2,6 +2,7 @@ package com.github.lany192.edittext;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
@@ -23,23 +24,30 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     @DrawableRes
     private int mLeftDrawableResId;
     private boolean mClearEnable = false;
+    @DrawableRes
+    private int mClearDrawableResId = R.drawable.vector_delete_black;
 
     public ClearEditText(Context context) {
         super(context);
-        init();
+        init(null);
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(attrs);
     }
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(attrs);
     }
 
-    private void init() {
+    private void init(AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ClearEditText);
+            mClearDrawableResId = a.getResourceId(R.styleable.ClearEditText_clearDrawable, mClearDrawableResId);
+            a.recycle();
+        }
         initClearIcon();
         initLeftIcon();
         setOnFocusChangeListener(this);
@@ -47,10 +55,15 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         setCompoundDrawablePadding(8);
     }
 
+    public void setClearDrawable(@DrawableRes int resId) {
+        this.mClearDrawableResId = resId;
+        invalidate();
+    }
+
     private void initClearIcon() {
         Drawable clearDrawable = getCompoundDrawables()[2];
         if (clearDrawable == null) {
-            clearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.vector_delete_black);
+            clearDrawable = ContextCompat.getDrawable(getContext(), mClearDrawableResId);
         }
         clearDrawable.setBounds(0, 0, dp2px(20), dp2px(20));
         Drawable right = mClearEnable ? clearDrawable : null;
