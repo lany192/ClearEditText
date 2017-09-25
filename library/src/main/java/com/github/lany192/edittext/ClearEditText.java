@@ -1,6 +1,7 @@
 package com.github.lany192.edittext;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
@@ -9,6 +10,7 @@ import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -25,8 +27,8 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     @DrawableRes
     private int mClearDrawableResId = R.drawable.vector_delete_black;
 
-    private float mClearDrawableSize = 20;
-    private float mLeftDrawableSize = 20;
+    private float mClearDrawableSize = dp2px(20);
+    private float mLeftDrawableSize = dp2px(20);
 
     public ClearEditText(Context context) {
         super(context);
@@ -47,9 +49,9 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ClearEditText);
             mClearDrawableResId = a.getResourceId(R.styleable.ClearEditText_clear_drawable, mClearDrawableResId);
-            mClearDrawableSize = a.getDimension(R.styleable.ClearEditText_clear_size, 20);
+            mClearDrawableSize = a.getDimension(R.styleable.ClearEditText_clear_size, dp2px(20));
             mLeftDrawableResId = a.getResourceId(R.styleable.ClearEditText_left_drawable, -1);
-            mLeftDrawableSize = a.getDimension(R.styleable.ClearEditText_left_size, 20);
+            mLeftDrawableSize = a.getDimension(R.styleable.ClearEditText_left_size, dp2px(20));
             a.recycle();
         }
         initClearIcon();
@@ -57,6 +59,10 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         setOnFocusChangeListener(this);
         addTextChangedListener(this);
         setCompoundDrawablePadding(8);
+    }
+
+    private float dp2px(float dpValue) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, Resources.getSystem().getDisplayMetrics());
     }
 
     public void setClearDrawable(@DrawableRes int resId) {

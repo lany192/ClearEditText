@@ -11,9 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
+        android:text="ClearEditText1" />
+
+    <com.github.lany192.edittext.ClearEditText
+        android:id="@+id/edittext2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="ClearEditText2"
+        app:clear_drawable="@drawable/delete_red"
+        app:clear_size="20dp" />
+
+    <com.github.lany192.edittext.ClearEditText
+        android:id="@+id/edittext3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="ClearEditText3"
+        app:left_drawable="@mipmap/ic_launcher"
+        app:left_size="20dp" />
+
+    <com.github.lany192.edittext.ClearEditText
+        android:id="@+id/edittext4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="ClearEditText4"
         app:clear_drawable="@drawable/delete_red"
         app:clear_size="20dp"
         app:left_drawable="@mipmap/ic_launcher"
         app:left_size="20dp" />
-
 </LinearLayout>
