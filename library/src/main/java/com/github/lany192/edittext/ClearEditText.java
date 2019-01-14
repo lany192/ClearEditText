@@ -18,6 +18,9 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
+/**
+ * 带删除功能的EditText
+ */
 public class ClearEditText extends AppCompatEditText implements OnFocusChangeListener, TextWatcher {
     private Drawable mLeftDrawable;
     private boolean hasFocus;
@@ -143,14 +146,13 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
 
     }
 
+    /**
+     * 设置震动效果
+     */
     public void setShakeAnimation() {
-        this.setAnimation(shakeAnimation(5));
-    }
-
-    public static Animation shakeAnimation(int counts) {
-        Animation translateAnimation = new TranslateAnimation(0, 10, 0, 0);
-        translateAnimation.setInterpolator(new CycleInterpolator(counts));
-        translateAnimation.setDuration(1000);
-        return translateAnimation;
+        Animation animation = new TranslateAnimation(0, 10, 0, 0);
+        animation.setInterpolator(new CycleInterpolator(5));
+        animation.setDuration(1000);
+        this.setAnimation(animation);
     }
 }
