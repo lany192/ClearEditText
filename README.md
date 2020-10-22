@@ -13,7 +13,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Step 2. Add the dependency
 
     dependencies {
-        compile 'com.github.lany192:ClearEditText:1.0.6'
+        implementation 'com.github.lany192:ClearEditText:latest'
     }
 
 ## Step 3. Use in layout
