@@ -1,8 +1,10 @@
-package com.github.lany192.clearedittext.sample;
+package com.github.lany192.sample;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.lany192.clearedittext.sample.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override

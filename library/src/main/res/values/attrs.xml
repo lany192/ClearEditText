@@ -6,4 +6,12 @@
         <attr name="left_drawable" format="reference" />
         <attr name="left_size" format="dimension|integer" />
     </declare-styleable>
+
+    <declare-styleable name="CodeEditText">
+        <attr name="strokeLength" format="integer" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeHeight" format="dimension" />
+        <attr name="strokePadding" format="dimension" />
+        <attr name="strokeBackground" format="reference" />
+    </declare-styleable>
 </resources>

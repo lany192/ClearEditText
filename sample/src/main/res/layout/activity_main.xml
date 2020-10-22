@@ -10,15 +10,15 @@
         android:id="@+id/edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="ClearEditText1" />
+        android:hint="ClearEditText1"
+        android:padding="16dp" />
 
     <com.github.lany192.edittext.ClearEditText
         android:id="@+id/edittext2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="ClearEditText2"
         android:padding="16dp"
-        android:text="ClearEditText2"
         app:clear_drawable="@drawable/delete_red"
         app:clear_size="20dp" />
 
@@ -26,8 +26,8 @@
         android:id="@+id/edittext3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="ClearEditText3"
         android:padding="16dp"
-        android:text="ClearEditText3"
         app:left_drawable="@mipmap/ic_launcher"
         app:left_size="20dp" />
 
@@ -35,10 +35,23 @@
         android:id="@+id/edittext4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="ClearEditText4"
         android:padding="16dp"
-        android:text="ClearEditText4"
         app:clear_drawable="@drawable/delete_red"
         app:clear_size="20dp"
         app:left_drawable="@mipmap/ic_launcher"
         app:left_size="20dp" />
+
+    <com.github.lany192.edittext.CodeEditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxEms="6"
+        android:text="123456"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:strokeBackground="@android:color/holo_orange_light"
+        app:strokeHeight="60dp"
+        app:strokeLength="6"
+        app:strokeWidth="60dp" />
 </LinearLayout>
